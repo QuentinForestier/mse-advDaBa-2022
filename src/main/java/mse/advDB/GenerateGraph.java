@@ -17,6 +17,7 @@ public class GenerateGraph {
 
         System.out.println("Path to json: " + path);
 
+        int nbNode = Integer.max(1000,Integer.parseInt(System.getenv("MAX_NODES")));
         String ip = System.getenv("NEO4J_IP");
         System.out.println("IP address of server : " + ip);
 
@@ -44,8 +45,10 @@ public class GenerateGraph {
         jsonReader.setLenient(true);
 
         try (Session session = driver.session()) {
+            int count = 0;
             jsonReader.beginArray();
-            while (jsonReader.hasNext()) {
+            while (jsonReader.hasNext() && count < nbNode) {
+                count++;
                 Article article = getNode(jsonReader);
                 if (article.authors != null) {
                     article.authors = article.authors.stream()
