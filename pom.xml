@@ -93,7 +93,7 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>mse.advDB.GenerateGraph</mainClass>
+                    <mainClass>mse.advDB.Example</mainClass>
                 </configuration>
             </plugin>
             <plugin>
